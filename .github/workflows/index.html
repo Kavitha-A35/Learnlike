@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <title>Mood & Habit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Emoji Background -->
+    <div class="emoji-bg">
+    <span>😊</span><span>😎</span><span>🤩</span><span>😇</span>
+    <span>🥳</span><span>😴</span><span>😡</span><span>😔</span>
+
+    <span>😂</span><span>😍</span><span>😜</span><span>🤗</span>
+    <span>😱</span><span>😋</span><span>🤠</span><span>🤡</span>
+    <span>😇</span><span>😁</span><span>😢</span><span>😯</span>
+    <span>🤤</span><span>🧐</span><span>🤯</span><span>😻</span>
+</div>
+
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+        <center><h2>Menu</h2></center>
+        <a onclick="showPage('dashboard')">Dashboard</a>
+        <a onclick="showPage('addMood')">Add Mood</a>
+        <a onclick="showPage('recordsPage')">Your Records</a>
+        <a onclick="showPage('settings')">Settings</a>
+        <a onclick="showPage('profile')">Profile</a>
+    </div>
+
+    <!-- Menu Button -->
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <!-- Top Title -->
+    <header class="top-bar">
+        <img src="girl.jpg" class="profile-pic" alt="Profile">
+        <h1>My Mood & Habit Tracker</h1>
+    </header>
+
+    <!-- Main Page Container -->
+    <div class="container">
+
+        <!-- DASHBOARD PAGE -->
+        <div id="dashboard" class="page">
+            <h2>📊 Dashboard</h2>
+
+            <div class="dash-grid">
+                <div class="dash-card" id="latestMood">
+                    <h3>Latest Mood</h3>
+                    <p>No records yet</p>
+                </div>
+
+                <div class="dash-card" id="totalHabits">
+                    <h3>Total Habits Count</h3>
+                    <p>0</p>
+                </div>
+
+                <div class="dash-card" id="moodCount">
+                    <h3>Mood Overview</h3>
+                    <canvas id="moodChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADD MOOD PAGE -->
+        <div id="addMood" class="page" style="display:none;">
+            <div class="form-section">
+
+                <label>Mood</label>
+                <select id="mood">
+                    <option value="😊 Happy">😊 Happy</option>
+                    <option value="😐 Neutral">😐 Neutral</option>
+                    <option value="😔 Sad">😔 Sad</option>
+                    <option value="😡 Angry">😡 Angry</option>
+                    <option value="🤩 Excited">🤩 Excited</option>
+                </select>
+
+                <label>Habit Name</label>
+                <input type="text" id="habitName" placeholder="Ex: Reading, Meditation">
+
+                <label>Habits Completed</label>
+                <input type="number" id="habits" placeholder="Enter count" min="1">
+
+
+                <label>Notes</label>
+                <textarea id="notes" placeholder="Write something..."></textarea>
+
+                <button onclick="addRecord()">Add Record</button>
+            </div>
+        </div>
+
+        <!-- RECORDS PAGE -->
+        <div id="recordsPage" class="page" style="display:none;">
+            <h2>📌 Your Daily Records</h2>
+            <div id="records"></div>
+        </div>
+
+        <!-- SETTINGS PAGE -->
+        <div id="settings" class="page" style="display:none;">
+            <h2>⚙ Settings</h2>
+
+            <div class="setting-item">
+                <label>Theme Mode</label>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- PROFILE PAGE -->
+        <div id="profile" class="page" style="display:none;">
+            <h2>👤 Profile</h2>
+
+            <center>
+                <img src="girl.jpg" class="profile-big">
+                <h3 id="pName">Kavitha</h3>
+                <p id="pEmail">kavideepi345@gmail.com</p>
+                <p id="pBio">Student | Developer | Mood Tracker User</p>
+            </center>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
